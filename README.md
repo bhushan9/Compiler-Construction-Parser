@@ -18,109 +18,109 @@ The parser is implemented using recursive descent parser with one function for e
 <h2>The LL(1) grammar is as follows with total 103 productions and 51 Non Terminals</h2>
 
 
-<program> --> empty 
-			| <type name> <program1>
+<program> --> empty | <type name> <program1>
+			
 <program1> --> ID <program2>
-<program2> --> <Beta3> <program3> 
-			 | left_parenthesis <parameter list> right_parenthesis <Beta1> <C>
+<program2> --> <Beta3> <program3> | left_parenthesis <parameter list> right_parenthesis <Beta1> <C>
+			 
 <program3> -->  <id list prime> <program4>
 <program4> --> semicolon <program5>
-<program5> --> empty 
-			 | <type name> ID <program7>
-<program7> ->  left_parenthesis <parameter list> right_parenthesis <Beta1> <C> 
-            | <id list prime> semicolon <A>	 
-			| left_bracket <expression> right_bracket <id list prime> semicolon  <A> 
-<A> --> empty 
-      | <type name> ID <A prime>
-<A prime> -->  left_parenthesis <parameter list> right_parenthesis  <Beta1> <C> 
-            | <Beta3> <id list prime> semicolon <B> <a double prime>
-<A double prime> -->  empty 
-                   | <func decl> <Beta1> <C>
-<program6> --> empty 
-			 | <func decl> <Beta1> <C>
+<program5> --> empty  | <type name> ID <program7>
+			
+<program7> ->  left_parenthesis <parameter list> right_parenthesis <Beta1> <C> | <id list prime> semicolon <A> | left_bracket <expression> right_bracket <id list prime> semicolon  <A> 
+            	 
+			
+<A> --> empty | <type name> ID <A prime>
+      
+<A prime> -->  left_parenthesis <parameter list> right_parenthesis  <Beta1> <C>  | <Beta3> <id list prime> semicolon <B> <a double prime>
+           
+<A double prime> -->  empty  | <func decl> <Beta1> <C>
+                  
+<program6> --> empty  | <func decl> <Beta1> <C>
+			
 <func list> --> <func decl> <Beta1> <C>
-<C> --> empty 
-	  | <func list>
-<Beta1> --> semicolon 
-		  | left_brace <data decls> <statements> right_brace
+<C> --> empty | <func list>
+	  
+<Beta1> --> semicolon | left_brace <data decls> <statements> right_brace
+		  
 <func decl> --> <type name> ID left_parenthesis <parameter list> right_parenthesis  
-<type name> --> int 
-			  | void 
-			  | binary 
-			  | decimal 
-<parameter list> --> empty 
-                   | int ID <non-empty list prime> 
-				   | decimal ID <non-empty list prime> 
-				   | binary ID <non-empty list prime> 
-				   | void <Z>  		   
-<Z> --> empty 
-      | ID <non-empty list prime>
-<non-empty list prime> --> comma <type name> ID <non-empty list prime> 
-                         | empty
+<type name> --> int  | void  | binary  | decimal 
+			 
+			 
+			 
+<parameter list> --> empty  | int ID <non-empty list prime>  | decimal ID <non-empty list prime> | binary ID <non-empty list prime> | void <Z>  	
+                  
+				  
+				   
+				   	   
+<Z> --> empty | ID <non-empty list prime>
+      
+<non-empty list prime> --> comma <type name> ID <non-empty list prime>  | empty
+                        
 <data decls> --> <type name><id list> semicolon <B>
-<B> -->  empty 
-      | <data decls>
+<B> -->  empty  | <data decls>
+     
 <id list> --> <id> <id list prime>
-<id list prime> --> comma <id> <id list prime> 
-                  | empty
+<id list prime> --> comma <id> <id list prime>  | empty
+                 
 <id> --> ID <Beta3> 
-<Beta3> --> empty 
-          | left_bracket <expression> right_bracket
+<Beta3> --> empty  | left_bracket <expression> right_bracket
+         
 <block statements> --> left_brace <statements> right_brace 
-<statements> --> empty 
-               | <statement> <statements> 
-<statement> --> ID <X> 
-              | <if statement> 
-			  | <while statement> 
-			  | <return statement> 
-			  | <break statement> 
-			  | <continue statement> 
-			  | read left_parenthesis  ID right_parenthesis semicolon 
-			  | write left_parenthesis <expression> right_parenthesis semicolon 
-			  | print left_parenthesis  STRING right_parenthesis semicolon 
-<X> --> <Beta3> equal_sign <expression> semicolon 
-      | left_parenthesis <expr list> right_parenthesis semicolon
-<expr list> --> empty 
-              | <non-empty expr list> 
+<statements> --> empty   | <statement> <statements> 
+             
+<statement> --> ID <X> | <if statement>   | <while statement>  | <return statement>   | <break statement>  | <continue statement>  | read left_parenthesis  ID right_parenthesis semicolon | write left_parenthesis <expression> right_parenthesis semicolon | print left_parenthesis  STRING right_parenthesis semicolon 
+              
+			
+			 
+			
+			 
+			 
+			  
+			  
+<X> --> <Beta3> equal_sign <expression> semicolon  | left_parenthesis <expr list> right_parenthesis semicolon
+     
+<expr list> --> empty  | <non-empty expr list> 
+             
 <non-empty expr list> --> <expression> <non-empty expr list prime>
-<non-empty expr list prime> --> comma <expression> <non-empty expr list prime> 
-                              | empty
+<non-empty expr list prime> --> comma <expression> <non-empty expr list prime>  | empty
+                             
 <if statement> --> if left_parenthesis <condition expression> right_parenthesis <block statements> 
 <condition expression> -->  <condition> <Beta2>
-<Beta2> --> empty 
-          | <condition op> <condition>
-<condition op> --> double_and_sign 
-                 | double_or_sign 
+<Beta2> --> empty  | <condition op> <condition>
+         
+<condition op> --> double_and_sign | double_or_sign 
+                 
 <condition> --> <expression> <comparison op> <expression> 
-<comparison op> --> == 
-                  | != 
-				  | > 
-				  | >= 
-				  | < 
-				  | <=
+<comparison op> --> ==  | !=   | >  | >=   | < | <=
+                 
+				
+				 
+				
+				  
 <while statement> --> while left_parenthesis <condition expression> right_parenthesis <block statements> 
 <return statement> --> return <Beta4> 
-<Beta4> --> <expression> semicolon 
-          | semicolon
+<Beta4> --> <expression> semicolon | semicolon
+          
 <break statement> ---> break semicolon 
 <continue statement> ---> continue semicolon
 <expression> --> <term> <expression prime> 
-<expression prime> --> <addop> <term> <expression prime> 
-                     | empty
-<addop> --> plus_sign 
-          | minus_sign 
+<expression prime> --> <addop> <term> <expression prime> | empty
+                     
+<addop> --> plus_sign | minus_sign 
+          
 <term> --> <factor> <term prime> 
-<term prime> -> <mulop> <factor> <term prime> 
-              | empty 
-<mulop> --> star_sign 
-          | forward_slash 
-<factor> --> ID <Beta5> 
-           | NUMBER 
-		   | minus_sign NUMBER 
-		   | left_parenthesis <expression> right_parenthesis
-<Beta5> --> empty 
-          | left_bracket <expression> right_bracket 
-		  | left_parenthesis <expr list> right_parenthesis
+<term prime> -> <mulop> <factor> <term prime>  | empty 
+             
+<mulop> --> star_sign  | forward_slash 
+         
+<factor> --> ID <Beta5> | NUMBER | minus_sign NUMBER | left_parenthesis <expression> right_parenthesis
+           
+		   
+		   
+<Beta5> --> empty  | left_bracket <expression> right_bracket   | left_parenthesis <expr list> right_parenthesis
+         
+		
 		  
 
 <h2>First plus set </h2>
