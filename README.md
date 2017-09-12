@@ -125,8 +125,8 @@ The parser is implemented using recursive descent parser with one function for e
 
 <h2>First plus set </h2>
 
-	<program> → ε	                                                                                  = $
-	<program> → <type name> <program1>	                                                              =int, void, binary, decimal
+<program> → ε	                                                                                  = $
+<program> → <type name> <program1>	                                                              =int, void, binary, decimal
 	<program1> → ID <program2>	                                                                      =ID
 	<program2> → <Beta3> <program3>	                                                                  =left_bracket, comma, semicolon
 	<program2> → left_parenthesis <parameter list> right_parenthesis <Beta1> <C>	                      =left_parenthesis
