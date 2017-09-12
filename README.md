@@ -15,7 +15,7 @@ The parser is implemented using recursive descent parser with one function for e
 
 
 
-<h2>The LL(1) grammar is as follows with total 103 productions and 51 Non Terminals<h2>
+<h2>The LL(1) grammar is as follows with total 103 productions and 51 Non Terminals</h2>
 
 
 <program> --> empty 
